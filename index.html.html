@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Chatterjee — Digital Leader & AI Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f5f2ec;
+    --cream: #ede9df;
+    --rust: #c4562a;
+    --rust-light: #e8724a;
+    --gold: #b8943f;
+    --slate: #3a3a3a;
+    --muted: #7a7670;
+    --border: #d8d3c9;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.4rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background: rgba(245,242,236,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem 5rem;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 300;
+    color: var(--muted);
+    margin-top: 1rem;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.7s;
+  }
+
+  .hero-desc {
+    margin-top: 2.5rem;
+    max-width: 480px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--slate);
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.1s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--rust);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.8rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--rust-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--border);
+    color: var(--slate);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.8rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--rust);
+    color: var(--rust);
+    transform: translateY(-1px);
+  }
+
+  .hero-right {
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 0.4s;
+  }
+
+  .hero-graphic {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decorative geometric rings */
+  .ring {
+    position: absolute;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    animation: rotateSlow linear infinite;
+  }
+
+  .ring-1 { width: 380px; height: 380px; animation-duration: 60s; }
+  .ring-2 { width: 280px; height: 280px; border-style: dashed; animation-duration: 45s; animation-direction: reverse; }
+  .ring-3 { width: 160px; height: 160px; border-color: var(--rust); opacity: 0.3; animation-duration: 30s; }
+
+  .hero-stat-grid {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-stat {
+    text-align: right;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .hero-stat-num span {
+    color: var(--rust);
+  }
+
+  .hero-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .hero-location {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .location-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--rust);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  /* ── ABOUT / PHILOSOPHY ── */
+  section {
+    padding: 7rem 5rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: var(--rust);
+    opacity: 0.4;
+  }
+
+  .about {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .about .section-label {
+    color: var(--gold);
+  }
+
+  .about .section-label::after {
+    background: var(--gold);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .about-heading em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .about-body p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(245,242,236,0.75);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .philosophy-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 5rem;
+  }
+
+  .philosophy-item {
+    padding: 2.5rem 2.5rem 2.5rem 0;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .philosophy-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
+  .philosophy-item:nth-child(2) { padding-left: 2.5rem; }
+
+  .phi-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .phi-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .phi-body {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.55);
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--paper); }
+
+  .exp-timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .exp-item {
+    position: relative;
+    padding: 0 0 4rem 3rem;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -0.45rem;
+    top: 0.4rem;
+    width: 8px;
+    height: 8px;
+    background: var(--rust);
+    border-radius: 50%;
+  }
+
+  .exp-item:last-child { padding-bottom: 0; }
+
+  .exp-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--slate);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+    font-size: 0.8rem;
+  }
+
+  /* ── EXPERTISE ── */
+  .expertise { background: var(--cream); }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .expertise-card {
+    background: var(--cream);
+    padding: 2.5rem;
+    transition: background 0.25s;
+  }
+
+  .expertise-card:hover { background: #fff; }
+
+  .expertise-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .expertise-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+
+  .expertise-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── ADVISORY ── */
+  .advisory { background: var(--paper); }
+
+  .advisory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .advisory-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+
+  .advisory-card:hover { border-color: var(--rust); }
+
+  .advisory-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--rust);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+
+  .advisory-card:hover::before { transform: scaleY(1); }
+
+  .advisory-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+  }
+
+  .advisory-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .advisory-body {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── EDUCATION ── */
+  .education { background: var(--cream); }
+
+  .edu-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .edu-card {
+    padding: 2rem 0;
+    border-top: 2px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .edu-card:hover { border-top-color: var(--rust); }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-inst {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 8rem 5rem;
+  }
+
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(245,242,236,0.55);
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(245,242,236,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: rgba(245,242,236,0.25);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
+    .hero-right { height: 350px; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .philosophy-row { grid-template-columns: 1fr; }
+    .philosophy-item, .philosophy-item:last-child, .philosophy-item:nth-child(2) {
+      padding: 2rem 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .expertise-grid { grid-template-columns: 1fr 1fr; }
+    .advisory-grid, .edu-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 1.5rem; }
+    .contact { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Abhishek Chatterjee</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#advisory">Advisory</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Digital Leader · AI Strategist · Growth Advisor</p>
+    <h1 class="hero-name">Abhishek<br><em>Chatterjee</em></h1>
+    <p class="hero-title">Digital Products & AI Innovation — Pharma &amp; Beyond</p>
+    <p class="hero-desc">
+      Bridging strategic vision with hands-on execution across drug development, clinical operations and AI-powered product design. Currently leading digital transformation at Novo Nordisk, Copenhagen.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Let's Connect →</a>
+      <a href="#experience" class="btn-outline">View Career</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-location">
+      <span class="location-dot"></span>
+      Copenhagen, Denmark
+    </div>
+
+    <div class="hero-graphic">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+    </div>
+
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <div class="hero-stat-num">13<span>+</span></div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">40<span>+</span></div>
+        <div class="hero-stat-label">Team Members Led</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Top-10 Pharma Cos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-label">Startups Advised</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-label">Profile</p>
+  <div class="about-grid reveal">
+    <div>
+      <h2 class="about-heading">Where <em>strategy</em> meets execution</h2>
+    </div>
+    <div class="about-body">
+      <p>Results-driven business leader with over 13 years spanning healthcare, process transformation, product development and AI innovation. I have successfully led multi-million-dollar global initiatives across Drug Development, Medical &amp; Commercial — driving operational excellence through product delivery, end-to-end process redesign, and organisational transformation.</p>
+      <p>My expertise spans conceptual solution design and delivery for digital products across Portfolio Acceleration, Competitive Intelligence, Protocol Optimisation, Feasibility, and Study Start-up — leveraging Agentic GenAI/LLM-based use cases at scale.</p>
+      <p>Beyond corporate leadership, I serve as a Strategic and Growth Advisor to startups and scale-ups, helping them accelerate growth through AI-driven strategies and next-generation technologies.</p>
+    </div>
+  </div>
+
+  <div class="philosophy-row reveal">
+    <div class="philosophy-item">
+      <div class="phi-number">01</div>
+      <div class="phi-title">Strategic Vision</div>
+      <div class="phi-body">Translating ambiguous business challenges into clear, executable digital product roadmaps — from concept to delivery at scale.</div>
+    </div>
+    <div class="philosophy-item">
+      <div class="phi-number">02</div>
+      <div class="phi-title">AI-First Design</div>
+      <div class="phi-body">Incubating and validating GenAI &amp; LLM-based proof of concepts that create measurable business value across clinical development workflows.</div>
+    </div>
+    <div class="philosophy-item">
+      <div class="phi-number">03</div>
+      <div class="phi-title">People & Change</div>
+      <div class="phi-body">Building high-performing cross-functional teams and guiding organisations through complex technology adoption and cultural transformation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <p class="section-label">Career</p>
+  <div class="exp-timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novo Nordisk A/S</span>
+        <span class="exp-period">Jan 2026 — Present · Copenhagen</span>
+      </div>
+      <div class="exp-role">Digital Products Suite Leader — Strategic Design &amp; Planning</div>
+      <ul class="exp-bullets">
+        <li>Heading digital products, process and OKR across Development — Study Design, Feasibility, Study Start-up &amp; Cost/Budget Management.</li>
+        <li>Department head of Strategic Design &amp; Planning; responsible for AI-to-stakeholder strategy and user change management.</li>
+        <li>Core member of market scanning team assessing emerging AI technologies and start-up companies.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novo Nordisk A/S</span>
+        <span class="exp-period">Dec 2024 — Dec 2025 · Copenhagen</span>
+      </div>
+      <div class="exp-role">Head of Product Suite, Senior Director</div>
+      <ul class="exp-bullets">
+        <li>Head of digital products, analytics and insights across Study/Protocol Design suite (Clinical Development) in Study Hub.</li>
+        <li>Led Study Design Insights department P&amp;L, driving strategic decision-making and financial success.</li>
+        <li>Led the process and digital strategy change across Development.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novartis AG</span>
+        <span class="exp-period">Mar 2024 — Dec 2024 · Switzerland</span>
+      </div>
+      <div class="exp-role">Head, Health Data Insights &amp; Design a.i.</div>
+      <ul class="exp-bullets">
+        <li>Functional Head of Data Insights and Product Design, leading a team of 40+ associates across Product Owners, Insights Directors and Intelligence functions.</li>
+        <li>Collaborated with Executives, DU Heads and IT Leads to define roadmap and budget pathways for Portfolio Planning, Feasibility, Site Selection and Study Start-up.</li>
+        <li>Standing member of central AI &amp; Digital SteerCo covering AI Concept Sheet Generation, Portfolio Simulations and Recruitment Projection products.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novartis AG</span>
+        <span class="exp-period">2023 — Dec 2024 · Switzerland</span>
+      </div>
+      <div class="exp-role">Solution Design Director / Practice Head</div>
+      <ul class="exp-bullets">
+        <li>Practice Head for Feasibility and Site Selection Suite in Global Clinical Operations, leading 30+ associates across Basel, US, Dublin and India.</li>
+        <li>Incubated GenAI &amp; LLM-based business use cases from proof-of-concept to production.</li>
+        <li>Standing member of Clinical Operations Tech SteerCo representing innovative and intelligent solutions.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novartis AG</span>
+        <span class="exp-period">2019 — 2023 · Switzerland / India</span>
+      </div>
+      <div class="exp-role">Associate Director, Solution Design / Product Lead</div>
+      <ul class="exp-bullets">
+        <li>Led multiple products through inception, design, planning, execution and delivery across Clinical Ops Strategy, Study and Site Operations.</li>
+        <li>Incubated Global Health Insights function in Clinical Operations.</li>
+        <li>Designed data acquisition roadmap with global data providers across US, Japan and China.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">Novartis HealthCare Pvt. Ltd.</span>
+        <span class="exp-period">2016 — 2019 · India / US</span>
+      </div>
+      <div class="exp-role">Senior Manager → Manager → Senior Analyst</div>
+      <ul class="exp-bullets">
+        <li>Led project delivery for FFO Data Strategy and Clinical Ops Site Operations reporting &amp; analytics.</li>
+        <li>Managed cross-functional teams of 10+ across budget, resourcing and project load management.</li>
+        <li>Played techno-functional role bridging business needs with technology architecture and project execution.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-company">ZS Associates</span>
+        <span class="exp-period">2013 — 2016 · India</span>
+      </div>
+      <div class="exp-role">Associate Consultant → Business Technology Analyst</div>
+      <ul class="exp-bullets">
+        <li>Designed and delivered BI projects — requirement gathering, data modelling, report design and ad hoc analytics in healthcare.</li>
+        <li>Successfully delivered 4+ analytics projects across the healthcare industry.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise" id="expertise">
+  <p class="section-label">Core Expertise</p>
+  <div class="expertise-grid reveal">
+
+    <div class="expertise-card">
+      <span class="expertise-icon">⚙️</span>
+      <div class="expertise-name">Digital Product Leadership</div>
+      <p class="expertise-desc">End-to-end product ownership — from conceptual design through delivery — across complex clinical and commercial digital platforms.</p>
+    </div>
+
+    <div class="expertise-card">
+      <span class="expertise-icon">🤖</span>
+      <div class="expertise-name">Agentic AI / GenAI</div>
+      <p class="expertise-desc">Incubating LLM and Agentic AI use cases for Protocol Optimisation, Portfolio Simulation, Competitive Intelligence and Recruitment Projection.</p>
+    </div>
+
+    <div class="expertise-card">
+      <span class="expertise-icon">🔄</span>
+      <div class="expertise-name">Process Transformation</div>
+      <p class="expertise-desc">End-to-end process redesign and operational excellence programmes across global Drug Development and Clinical Operations functions.</p>
+    </div>
+
+    <div class="expertise-card">
+      <span class="expertise-icon">📊</span>
+      <div class="expertise-name">Insights &amp; Analytics</div>
+      <p class="expertise-desc">Building data-driven intelligence functions that translate complex datasets into actionable narratives for executive decision-making.</p>
+    </div>
+
+    <div class="expertise-card">
+      <span class="expertise-icon">🌍</span>
+      <div class="expertise-name">Global Stakeholder Management</div>
+      <p class="expertise-desc">Managing complex, multi-geography stakeholder networks across Executives, DU Heads, IT Leads and external data providers worldwide.</p>
+    </div>
+
+    <div class="expertise-card">
+      <span class="expertise-icon">🚀</span>
+      <div class="expertise-name">Startup Growth Advisory</div>
+      <p class="expertise-desc">Advising early- to mid-stage startups on AI-driven growth strategy, product market fit, customer targeting and board governance.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADVISORY -->
+<section class="advisory" id="advisory">
+  <p class="section-label">Advisory</p>
+  <div class="advisory-grid reveal">
+
+    <div class="advisory-card">
+      <div class="advisory-org">Render Health Technology</div>
+      <div class="advisory-role">Strategic Board Advisor</div>
+      <p class="advisory-body">Serving on the strategic board of Render Health Technology since October 2022 — guiding product direction, market positioning, and technology strategy in digital health.</p>
+    </div>
+
+    <div class="advisory-card">
+      <div class="advisory-org">Multiple Startups · Basel, Switzerland</div>
+      <div class="advisory-role">Growth Advisor &amp; Board Observer</div>
+      <p class="advisory-body">Since March 2022, advising a portfolio of early- to mid-range startups on product and customer targeting strategy — operating as Board Observer and growth catalyst.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <p class="section-label">Education &amp; Training</p>
+  <div class="edu-row reveal">
+
+    <div class="edu-card">
+      <div class="edu-year">2008 — 2012</div>
+      <div class="edu-degree">B.Tech, Information Technology</div>
+      <div class="edu-inst">National Institute of Technology, Patna, India</div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-year">2021</div>
+      <div class="edu-degree">HMX Fundamentals — Pharmacology</div>
+      <div class="edu-inst">Harvard Medical School</div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-year">2022</div>
+      <div class="edu-degree">M1 — Cross-functional Manager</div>
+      <div class="edu-inst">Novartis Internal Leadership Programme</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" style="padding:8rem 5rem;">
+  <h2 class="contact-heading reveal">Let's build <em>something</em><br>remarkable together</h2>
+  <p class="contact-sub reveal">Whether you're transforming clinical development, scaling an AI product, or need a strategic thought partner — I'd love to connect.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:aabhishek.nitp@gmail.com" class="contact-link">✉ Email</a>
+    <a href="https://dk.linkedin.com/in/abhishek-chatterjee-b3b64722" target="_blank" class="contact-link">↗ LinkedIn</a>
+    <a href="tel:+4534441787" class="contact-link">☎ +45 3444 1787</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Abhishek Chatterjee</span>
+  <span class="footer-copy">© 2026 · Copenhagen, Denmark</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.06) + 's';
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
